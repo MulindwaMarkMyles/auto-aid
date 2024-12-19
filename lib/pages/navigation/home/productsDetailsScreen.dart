@@ -1,3 +1,4 @@
+import 'package:auto_aid/pages/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
@@ -338,7 +339,10 @@ class _ProductsDetailsScreenState extends State<ProductsDetailsScreen> {
                 ],
               ),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => CartPage()));
+                },
                 icon: Icon(
                   IconlyLight.bag_2,
                   color: Colors.black,
