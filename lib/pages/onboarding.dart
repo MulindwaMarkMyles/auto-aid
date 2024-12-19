@@ -1,3 +1,4 @@
+import 'package:auto_aid/pages/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,18 +10,19 @@ class OnBoarding extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoarding> {
-  
   int _currentPage = 0;
-  
+
   void _onPageChanged(int index) {
     setState(() {
       _currentPage = index;
     });
   }
-  
+
+  @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +51,10 @@ class _OnBoardingState extends State<OnBoarding> {
             Center(
               child: ElevatedButton.icon(
                 onPressed: () {
-                  // Navigate to the next screen
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Navigation()));
                 },
                 icon: const Icon(Icons.arrow_forward),
                 iconAlignment: IconAlignment.end,
@@ -76,7 +81,7 @@ class _OnBoardingState extends State<OnBoarding> {
 
   // Helper Widget for Dots
   Widget _buildDot(int index) {
-    bool isActive = true ? (index == _currentPage) : false;
+    bool isActive = (index == _currentPage);
     return Container(
       width: 50,
       height: 7,
@@ -86,7 +91,7 @@ class _OnBoardingState extends State<OnBoarding> {
       ),
     );
   }
-  
+
   Widget _buildScrollWidget() {
     return SizedBox(
       height: 500,
@@ -95,7 +100,7 @@ class _OnBoardingState extends State<OnBoarding> {
         children: [
           _buildPageViewWidget(
             'assets/images/welcome.png',
-            'Welcome to AutoAid.',
+            'Welcome to AutoZaid.',
             'We are happy to have you, together we can make your car experience better',
           ),
           _buildPageViewWidget(
@@ -112,7 +117,7 @@ class _OnBoardingState extends State<OnBoarding> {
       ),
     );
   }
-  
+
   Widget _buildPageViewWidget(String image, String title, String subtitle) {
     return Column(
       children: [
@@ -139,5 +144,3 @@ class _OnBoardingState extends State<OnBoarding> {
     );
   }
 }
-
-
